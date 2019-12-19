@@ -1,0 +1,31 @@
+[debug] [2019-12-14T00:48:59.223Z] ----------------------------------------------------------------------
+[debug] [2019-12-14T00:48:59.226Z] Command:       E:\Windows\Archivos de programa\NodeJS\node.exe C:\Users\errju\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-12-14T00:48:59.227Z] CLI Version:   7.10.0
+[debug] [2019-12-14T00:48:59.227Z] Platform:      win32
+[debug] [2019-12-14T00:48:59.227Z] Node Version:  v12.10.0
+[debug] [2019-12-14T00:48:59.228Z] Time:          Fri Dec 13 2019 21:48:59 GMT-0300 (GMT-03:00)
+[debug] [2019-12-14T00:48:59.228Z] ----------------------------------------------------------------------
+[debug] [2019-12-14T00:48:59.228Z] 
+[debug] [2019-12-14T00:48:59.239Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-12-14T00:48:59.240Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\Juany\Programming\Angular\Stock Control\stock-control
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[debug] [2019-12-14T00:49:22.907Z] Error: kill ENOSYS
+    at process.kill (internal/process/per_thread.js:189:13)
+    at process.listener (C:\Users\errju\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (events.js:209:13)
+[error] 
+[error] Error: An unexpected error has occurred.
