@@ -11,9 +11,7 @@ export class UserLoginComponent implements OnInit {
 
   constructor(private auth: AuthServiceService) { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
   doGoogleLogin(){
     this.auth.googleLogin();
   }
