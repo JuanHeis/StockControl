@@ -12,6 +12,9 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SystemComponent } from './system/system/system.component';
+import { ProductoFormComponent } from './system/producto/producto-form/producto-form.component';
+import { ProductoListComponent } from './system/producto/producto-list/producto-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     UserLoginComponent,
     UserProfileComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    SystemComponent,
+    ProductoFormComponent,
+    ProductoListComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

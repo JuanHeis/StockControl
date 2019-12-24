@@ -21,13 +21,11 @@ interface User {
 })
 export class AuthServiceService {
   user: Observable<User>;
+  authState: any = null;
+  public state: boolean=false;
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private router: Router
-  ) {
 
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     //// Get auth data, then get firestore user document || null
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -42,17 +40,22 @@ export class AuthServiceService {
 
   googleLogin() {
     const provider = new auth.GoogleAuthProvider()
-    return this.oAuthLogin(provider);
+    return this.socialSignIn(provider);
   }
-  private oAuthLogin(provider) {
+  private socialSignIn(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
-      .then((credential) => {
-        this.updateUserData(credential.user)
+      .then((credential) =>  {
+          this.authState = credential.user
+          this.router.navigate(['/system']);
       })
+      .catch(error => console.log(error));
   }
 
+  updateState() {
+    this.state = !!this.authState;
+  }
 
-  private updateUserData(user) {
+    private updateUserData(user) {
     // Sets user data to firestore on login
 
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);

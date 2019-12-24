@@ -4,6 +4,8 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import { AuthGuard } from './guards/auth.guard';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { HomeComponent } from './home/home.component';
+import { SystemComponent } from './system/system/system.component';
+import { ProductoFormComponent } from './system/producto/producto-form/producto-form.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,16 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'system',
+    component: SystemComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'system/addproduct',
+    component: ProductoFormComponent,
     canActivate: [AuthGuard]
   }
 ];
