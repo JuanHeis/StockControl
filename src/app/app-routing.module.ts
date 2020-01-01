@@ -6,6 +6,7 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
 import { HomeComponent } from './home/home.component';
 import { SystemComponent } from './system/system/system.component';
 import { ProductoFormComponent } from './system/producto/producto-form/producto-form.component';
+import { ProductoListComponent } from './system/producto/producto-list/producto-list.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'system/addproduct',
     component: ProductoFormComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'system/listproduct',
+    component: ProductoListComponent,
     canActivate: [AuthGuard]
   }
 ];

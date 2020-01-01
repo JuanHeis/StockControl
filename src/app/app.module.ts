@@ -15,6 +15,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SystemComponent } from './system/system/system.component';
 import { ProductoFormComponent } from './system/producto/producto-form/producto-form.component';
 import { ProductoListComponent } from './system/producto/producto-list/producto-list.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductoListComponent } from './system/producto/producto-list/producto-
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

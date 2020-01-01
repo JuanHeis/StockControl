@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductoFormComponent implements OnInit {
 
+  aProduct: any = {
+    "name": "",
+    "category":"",
+    "quantity": 0,
+    "minQuantity": 0
+  };
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

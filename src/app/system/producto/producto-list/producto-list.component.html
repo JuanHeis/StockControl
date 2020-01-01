@@ -1,1 +1,16 @@
-<p>producto-list works!</p>
+<app-system></app-system>
+<br><br>
+
+<div class="row d-flex justify-content-center contenedorLista">
+    <div class="col-lg-6 col-md-10 listElement" *ngFor="let item of productsList">
+        <h6>{{item.name}}</h6>
+        <ul>
+            <li>Cantidad: {{item.quantity}}</li>
+            <li>Minimo: {{item.minQuantity}}</li>
+            <li>Categoria: {{item.category}}</li>
+
+            <button (click)="sumarUno(item)" class="btn btn-primary">Sumar uno</button>
+            <button (click)="restarUno(item)" class="btn btn-primary">Quitar uno</button>
+        </ul>
+    </div>
+</div>
