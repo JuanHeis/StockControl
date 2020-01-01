@@ -1,0 +1,9 @@
+div .listElement{
+    border-radius: 5px;
+    background-color: aquamarine;
+    margin: 2px;
+    color: gray;
+}
+div .contenedorLista {
+    max-height: 700px;
+}
