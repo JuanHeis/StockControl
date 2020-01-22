@@ -15,7 +15,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SystemComponent } from './system/system/system.component';
 import { ProductoFormComponent } from './system/producto/producto-form/producto-form.component';
 import { ProductoListComponent } from './system/producto/producto-list/producto-list.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {FormsModule} from '@angular/forms';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

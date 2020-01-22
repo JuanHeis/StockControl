@@ -14,8 +14,8 @@ export class DatabaseService {
   /**
    * Obtiene todos los productos traidos de firestore
    */
-  getProductos(): Observable<Product[]> {
-    return this.firestore.collection<Product>('productos')
+  getProductos(uidClient): Observable<Product[]> {
+    return this.firestore.collection<Product>(`usuariosproductos/${uidClient}/productos/`)
     .snapshotChanges().pipe(map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Product;
@@ -25,7 +25,10 @@ export class DatabaseService {
     })
     );
   }
+  addProduct(aProduct){
+    return this.firestore.collection('productos').add(aProduct);
+  }
   updateProduct(id:string, data: Partial<Product>): Promise<void>{
-    return this.firestore.doc<Product>(`/productos/${id}`).update(data);
+    return this.firestore.doc<Product>(`/usuariosproductos/Re7ONG1erqdtdPi9YtCQ3IGvmR92/productos/${id}`).update(data);
   }
 }
