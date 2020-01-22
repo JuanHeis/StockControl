@@ -20,9 +20,10 @@ interface User {
   providedIn: 'root'
 })
 export class AuthServiceService {
-  user: Observable<User>;
+  userUID: string;
+  user:any;
   authState: any = null;
-  public state: boolean=false;
+  public state: boolean = false;
 
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
@@ -37,44 +38,50 @@ export class AuthServiceService {
       })
     )
   }
-
+  ngOnInit(){
+    this.afAuth.authState.subscribe( user => {
+      if (user) { console.log("PANnn"+user.uid)  }
+    });
+  }
   googleLogin() {
     const provider = new auth.GoogleAuthProvider()
     return this.socialSignIn(provider);
   }
+
+
+
   private socialSignIn(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
-      .then((credential) =>  {
-          this.authState = credential.user
-          this.router.navigate(['/system']);
+      .then(credential => {
+        this.authState = credential.user
+        this.router.navigate(['/system'])
+        this.updateUserData(credential.user)
       })
       .catch(error => console.log(error));
   }
-
+  getUid(){
+  }
   updateState() {
     this.state = !!this.authState;
   }
 
-    private updateUserData(user) {
+  private updateUserData(user) {
     // Sets user data to firestore on login
-
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-
     const data: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL
     }
-
+    this.user = data;
     return userRef.set(data, { merge: true })
-
   }
 
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
+      this.router.navigate(['/']);
     });
   }
 }
