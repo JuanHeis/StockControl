@@ -21,10 +21,9 @@ interface User {
 })
 export class AuthServiceService {
   userUID: string;
-  user:any;
+  user: any;
   authState: any = null;
   public state: boolean = false;
-
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     //// Get auth data, then get firestore user document || null
@@ -38,17 +37,16 @@ export class AuthServiceService {
       })
     )
   }
-  ngOnInit(){
-    this.afAuth.authState.subscribe( user => {
-      if (user) { console.log("PANnn"+user.uid)  }
+  ngOnInit() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) { console.log("PANnn" + user.uid) }
     });
   }
+
   googleLogin() {
     const provider = new auth.GoogleAuthProvider()
     return this.socialSignIn(provider);
   }
-
-
 
   private socialSignIn(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
@@ -58,8 +56,6 @@ export class AuthServiceService {
         this.updateUserData(credential.user)
       })
       .catch(error => console.log(error));
-  }
-  getUid(){
   }
   updateState() {
     this.state = !!this.authState;

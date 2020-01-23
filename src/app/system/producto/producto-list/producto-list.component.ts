@@ -37,9 +37,19 @@ export class ProductoListComponent implements OnInit {
   }
 
   sumarUno(item){
-    this.database.updateProduct(item.id, {quantity: item.quantity + 1});
+    this.afAuth.authState.subscribe( user => {
+      if (user) {
+        this.database.updateProduct(user.uid, item.id, {quantity: item.quantity + 1})
+        return true
+      } else return false
+    })
   }
   restarUno(item){
-    this.database.updateProduct(item.id, {quantity: item.quantity - 1});
+    this.afAuth.authState.subscribe( user => {
+      if (user) {  
+        this.database.updateProduct(user.uid, item.id, {quantity: item.quantity - 1})
+        return true
+      } else return false
+    })
   }
 }
