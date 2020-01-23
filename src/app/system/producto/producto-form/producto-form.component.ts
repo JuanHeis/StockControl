@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-producto-form',
@@ -10,8 +11,6 @@ import { AuthServiceService } from 'src/app/auth/auth-service.service';
   styleUrls: ['./producto-form.component.css']
 })
 export class ProductoFormComponent implements OnInit {
-
-  
   aProduct: any = {
     "name": "",
     "category":"",
@@ -26,9 +25,8 @@ export class ProductoFormComponent implements OnInit {
     minQuantity: new FormControl('',Validators.required)
   })
 
-  constructor(private database: DatabaseService,private auth: AuthServiceService) {}
+  constructor(private database: DatabaseService,private auth: AuthServiceService, private afAuth: AngularFireAuth) {}
   ngOnInit() {
-    
     this.newProductForm.setValue({
       name: '',
       category:'',
@@ -36,8 +34,17 @@ export class ProductoFormComponent implements OnInit {
       minQuantity: 0,
     })
   }
+
   addNew(product){
-    console.log(this.auth.getUid())
+    const enviar = product
+    enviar.quantity.toInt()
+    enviar.minQuantity.toInt()
+    this.afAuth.authState.subscribe( user => {
+      if (user) {  
+        if (this.database.addProduct(user.uid, enviar))
+          alert("Objeto añadido!")
+      }
+    })
   }
 
 }

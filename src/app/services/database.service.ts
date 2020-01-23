@@ -16,19 +16,19 @@ export class DatabaseService {
    */
   getProductos(uidClient): Observable<Product[]> {
     return this.firestore.collection<Product>(`usuariosproductos/${uidClient}/productos/`)
-    .snapshotChanges().pipe(map(actions => {
+      .snapshotChanges().pipe(map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Product;
           const id = a.payload.doc.id;
           return { id, ...data };
         });
-    })
-    );
+      })
+      );
   }
-  addProduct(aProduct){
-    return this.firestore.collection('productos').add(aProduct);
+  addProduct(uid: string, aProduct) {
+    return this.firestore.collection(`/usuariosproductos/${uid}/productos/`).add(aProduct);
   }
-  updateProduct(id:string, data: Partial<Product>): Promise<void>{
-    return this.firestore.doc<Product>(`/usuariosproductos/Re7ONG1erqdtdPi9YtCQ3IGvmR92/productos/${id}`).update(data);
+  updateProduct(uid: string, id: string, data: Partial<Product>): Promise<void> {
+    return this.firestore.doc<Product>(`/usuariosproductos/${uid}/productos/${id}`).update(data);
   }
 }
