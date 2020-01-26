@@ -1,31 +1,9 @@
-# StockControl
-<<<<<<< HEAD
+# Sistema de control de stock hogareño
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+- Angular 2.8
+- Firebase
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-=======
-Control de stock con angular y firebase
->>>>>>> 1965cec5dada4b1504bab1e58995ddabf40472b4
+## Versions
+ * 1.0 : Productos se agregan a la base de datos. La lista puede mostrarlos y modificar su cantidad
+ * **1.1** : Fixed, Barras de navegacion en moviles
+ * 1.2 : ...
