@@ -3,14 +3,13 @@
 
 <div class="row d-flex justify-content-center contenedorLista">
     <div class="col-lg-6 col-md-10 listElement" *ngFor="let item of productsList">
-        <h6>{{item.name}}</h6>
+        <h5>{{item.name}}</h5>
         <ul>
             <li>Cantidad: {{item.quantity}}</li>
             <li>Minimo: {{item.minQuantity}}</li>
             <li>Categoria: {{item.category}}</li>
-
-            <button (click)="sumarUno(item)" class="btn btn-primary">Sumar uno</button>
-            <button (click)="restarUno(item)" class="btn btn-primary">Quitar uno</button>
+            <button (click)="sumarUno(item)" class="btn btn-primary espaciarbotones">Sumar uno</button>
+            <button (click)="restarUno(item)" class="btn btn-primary espaciarbotones">Quitar uno</button>
         </ul>
     </div>
 </div>

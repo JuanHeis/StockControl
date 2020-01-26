@@ -4,6 +4,9 @@ div .listElement{
     margin: 2px;
     color: gray;
 }
-div .contenedorLista {
-    max-height: 700px;
+.contenedorLista {
+    max-height: 400px;
+}
+li{
+    list-style-type:none;
 }

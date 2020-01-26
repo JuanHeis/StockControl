@@ -37,8 +37,8 @@ export class ProductoFormComponent implements OnInit {
 
   addNew(product){
     const enviar = product
-    enviar.quantity.toInt()
-    enviar.minQuantity.toInt()
+    // enviar.quantity.toInt()
+    // enviar.minQuantity.toInt()
     this.afAuth.authState.subscribe( user => {
       if (user) {  
         if (this.database.addProduct(user.uid, enviar))
