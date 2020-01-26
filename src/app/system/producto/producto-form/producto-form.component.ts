@@ -30,8 +30,8 @@ export class ProductoFormComponent implements OnInit {
     this.newProductForm.setValue({
       name: '',
       category:'',
-      quantity: 0,
-      minQuantity: 0,
+      quantity: '',
+      minQuantity: '',
     })
   }
 

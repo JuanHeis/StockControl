@@ -14,15 +14,18 @@ export class DatabaseService {
   /**
    * Obtiene todos los productos traidos de firestore
    */
-  getProductos(uidClient): Observable<Product[]> {
-    return this.firestore.collection<Product>(`usuariosproductos/${uidClient}/productos/`)
-      .snapshotChanges().pipe(map(actions => {
+  getProductos(uidCliente, queryCategory): Observable<Product[]> {
+    return this.firestore.collection<Product>(`usuariosproductos/${uidCliente}/productos/`,
+      ref => ref.where('category', '==', queryCategory))
+      .snapshotChanges()
+      .pipe(map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Product;
           const id = a.payload.doc.id;
           return { id, ...data };
         });
-      })
+      }
+      )
       );
   }
   addProduct(uid: string, aProduct) {
