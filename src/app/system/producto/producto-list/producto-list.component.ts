@@ -22,8 +22,6 @@ export class ProductoListComponent implements OnInit {
   constructor(private database: DatabaseService,private auth:AuthServiceService, private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-
-
     this.afAuth.authState.subscribe( user => {
       if (user) {  
         this.database.getProductos(user.uid).subscribe(
@@ -39,7 +37,7 @@ export class ProductoListComponent implements OnInit {
   sumarUno(item){
     this.afAuth.authState.subscribe( user => {
       if (user) {
-        this.database.updateProduct(user.uid, item.id, {quantity: item.quantity + 1})
+        this.database.updateProduct(user.uid, item.id, {quantity: +item.quantity + 1})
         return true
       } else return false
     })
@@ -47,7 +45,7 @@ export class ProductoListComponent implements OnInit {
   restarUno(item){
     this.afAuth.authState.subscribe( user => {
       if (user) {  
-        this.database.updateProduct(user.uid, item.id, {quantity: item.quantity - 1})
+        this.database.updateProduct(user.uid, item.id, {quantity: +item.quantity - 1})
         return true
       } else return false
     })
