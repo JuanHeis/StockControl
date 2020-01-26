@@ -18,13 +18,17 @@ interface User {
   styleUrls: ['./producto-list.component.css']
 })
 export class ProductoListComponent implements OnInit {
+  queryCategory: string="";
   productsList: Product[]
-  constructor(private database: DatabaseService,private auth:AuthServiceService, private afAuth: AngularFireAuth) { }
+  constructor(private database: DatabaseService, private auth: AuthServiceService, private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    this.afAuth.authState.subscribe( user => {
-      if (user) {  
-        this.database.getProductos(user.uid).subscribe(
+    this.getProductos()
+  }
+  getProductos(){
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.database.getProductos(user.uid, this.queryCategory.toLowerCase()).subscribe(
           response => {
             this.productsList = null
             this.productsList = response
@@ -33,19 +37,18 @@ export class ProductoListComponent implements OnInit {
       }
     });
   }
-
-  sumarUno(item){
-    this.afAuth.authState.subscribe( user => {
+  sumarUno(item) {
+    this.afAuth.authState.subscribe(user => {
       if (user) {
-        this.database.updateProduct(user.uid, item.id, {quantity: +item.quantity + 1})
+        this.database.updateProduct(user.uid, item.id, { quantity: +item.quantity + 1 })
         return true
       } else return false
     })
   }
-  restarUno(item){
-    this.afAuth.authState.subscribe( user => {
-      if (user) {  
-        this.database.updateProduct(user.uid, item.id, {quantity: +item.quantity - 1})
+  restarUno(item) {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.database.updateProduct(user.uid, item.id, { quantity: +item.quantity - 1 })
         return true
       } else return false
     })

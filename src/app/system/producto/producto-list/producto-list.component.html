@@ -2,6 +2,21 @@
 <br><br>
 
 <div class="row d-flex justify-content-center contenedorLista">
+
+    <h6>Búsqueda por <i>Categoria</i></h6>
+    <div class="col-12 d-flex justify-content-center contenedorLista">
+        <select [(ngModel)]="queryCategory" (ngModelChange)="getProductos()" name="query">
+            <option disabled value="null">Elija</option>
+            <option value="frio">Frio</option>
+            <option value="desayuno">Desayuno</option>
+            <option value="almacen">Almacen</option>
+            <option value="limpieza">Limpieza</option>
+            <option value="bebida">Bebida</option>
+            <option value="almacen">Fruta</option>
+            <option value="higiene personal">Higiene Personal</option>
+        </select>
+    </div>
+
     <div class="col-lg-6 col-md-10 listElement" *ngFor="let item of productsList">
         <h5>{{item.name}}</h5>
         <ul>
