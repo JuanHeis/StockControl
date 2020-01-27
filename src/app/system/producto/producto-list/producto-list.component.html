@@ -3,7 +3,7 @@
 
 <div class="row d-flex justify-content-center contenedorLista">
 
-    <h6>Búsqueda por <i>Categoria</i></h6>
+    <h5>Búsqueda por <i>Categoria</i></h5>
     <div class="col-12 d-flex justify-content-center contenedorLista">
         <select [(ngModel)]="queryCategory" (ngModelChange)="getProductos()" name="query">
             <option disabled value="null">Elija</option>
@@ -23,8 +23,16 @@
             <li>Cantidad: {{item.quantity}}</li>
             <li>Minimo: {{item.minQuantity}}</li>
             <li>Categoria: {{item.category}}</li>
-            <button (click)="sumarUno(item)" class="btn btn-primary espaciarbotones">Sumar uno</button>
-            <button (click)="restarUno(item)" class="btn btn-primary espaciarbotones">Quitar uno</button>
+
+            <div class="row">
+                <div class="col-10">
+                    <button (click)="sumarUno(item)" class="btn btn-primary espaciarbotones">Sumar uno</button>
+                    <button (click)="restarUno(item)" class="btn btn-primary espaciarbotones">Quitar uno</button>
+                </div>
+                <div class="col-2">
+                    <button (click)="eliminar(item)" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
         </ul>
     </div>
 </div>

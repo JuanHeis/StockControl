@@ -37,6 +37,14 @@ export class ProductoListComponent implements OnInit {
       }
     });
   }
+  eliminar(item){
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.database.deleteProduct(user.uid, item.id)
+        return true
+      } else return false
+    });
+  }
   sumarUno(item) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
