@@ -17,7 +17,7 @@
         </select>
     </div>
 
-    <div class="col-lg-6 col-md-10 listElement" *ngFor="let item of productsList">
+    <div class="col-lg-6 col-sm-12 col-md-10 listElement" *ngFor="let item of productsList">
         <h5>{{item.name}}</h5>
         <ul>
             <li>Cantidad: {{item.quantity}}</li>
@@ -25,11 +25,11 @@
             <li>Categoria: {{item.category}}</li>
 
             <div class="row">
-                <div class="col-10">
+                <div class="col-sm-4 col-md-10">
                     <button (click)="sumarUno(item)" class="btn btn-primary espaciarbotones">Sumar uno</button>
                     <button (click)="restarUno(item)" class="btn btn-primary espaciarbotones">Quitar uno</button>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-4 col-md-2">
                     <button (click)="eliminar(item)" class="btn btn-danger">Eliminar</button>
                 </div>
             </div>
