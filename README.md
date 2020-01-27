@@ -5,5 +5,6 @@
 
 ## Versions
  * 1.0 : Productos se agregan a la base de datos. La lista puede mostrarlos y modificar su cantidad
- * **1.1** : Fixed, Barras de navegacion en moviles
- * 1.2 : ...
+ * 1.1 : Fixed, Barras de navegacion en moviles
+ * **1.2** : Añadido: Funcionalidad de eliminar y filtrar por categoria
+ * 1.3: 
