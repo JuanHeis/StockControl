@@ -9,6 +9,11 @@
 
 # dependencies
 /node_modules
+<<<<<<< HEAD
+=======
+/src/environments/environments.ts
+/src/environments/environments.prod.ts
+>>>>>>> db9acf08c9a2b0448af8b4b619b49c0f6af914f9
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
@@ -40,6 +45,7 @@ yarn-error.log
 testem.log
 /typings
 /src/environments/**
+
 # System Files
 .DS_Store
 Thumbs.db
