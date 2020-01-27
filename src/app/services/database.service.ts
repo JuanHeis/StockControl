@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
 import { map } from 'rxjs/operators';
@@ -28,10 +28,13 @@ export class DatabaseService {
       )
       );
   }
-  addProduct(uid: string, aProduct) {
-    return this.firestore.collection(`/usuariosproductos/${uid}/productos/`).add(aProduct);
+  deleteProduct(uidCliente: string, idProduct: string): Promise<void> {
+    return this.firestore.doc<Product>(`/usuariosproductos/${uidCliente}/productos/${idProduct}`).delete();
   }
-  updateProduct(uid: string, id: string, data: Partial<Product>): Promise<void> {
-    return this.firestore.doc<Product>(`/usuariosproductos/${uid}/productos/${id}`).update(data);
+  addProduct(uidCliente: string, aProduct) {
+    return this.firestore.collection(`/usuariosproductos/${uidCliente}/productos/`).add(aProduct);
+  }
+  updateProduct(uidCliente: string, id: string, data: Partial<Product>): Promise<void> {
+    return this.firestore.doc<Product>(`/usuariosproductos/${uidCliente}/productos/${id}`).update(data);
   }
 }
